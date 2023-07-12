@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity2"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints">
+        <ImageButton
+            android:id="@+id/imageButtonback"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/rleft"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+             />
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:background="@drawable/pencil"
+            android:layout_marginStart="200dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton3"
+            app:layout_constraintTop_toTopOf="parent"
+             />
+
+        <ImageButton
+            android:id="@+id/imgbyeuthich"
+            android:layout_marginStart="30dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/star"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+             />
+
+        <ImageButton
+            android:id="@+id/imgbmenumain2"
+            android:layout_marginStart="30dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/iconmenu"/>
+    </LinearLayout>
+
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"/>
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="200dp"
+       android:gravity="center"
+       android:orientation="vertical"
+       android:layout_marginTop="30dp"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintTop_toTopOf="parent">
+
+       <TextView
+           android:id="@+id/txtusersinglemain2"
+           android:textColor="@color/black"
+           android:layout_width="100dp"
+           android:layout_height="100dp"
+           android:layout_gravity="center"
+           android:gravity="center"
+           android:textAllCaps="true"
+           android:textSize="40dp"
+           android:background="@drawable/hinhtron"/>
+       <TextView
+           android:id="@+id/txtuser"
+           android:layout_gravity="center"
+           android:gravity="center"
+           android:layout_width="match_parent"
+           android:layout_height="50dp"
+           android:textSize="24dp"
+           android:layout_marginTop="20dp"/>
+
+   </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bfr_linear"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="0dp"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/imgcall"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/phone_bl" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_height="wrap_content"
+                android:text="Goi"
+                android:textColor="#03A9F4"
+                android:textSize="15dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="47dp"
+            android:orientation="vertical"
+            android:gravity="center">
+
+           <ImageButton
+               android:id="@+id/imgmess"
+               android:layout_width="30dp"
+               android:layout_height="30dp"
+
+               android:background="@drawable/messnew_bl"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textColor="#03A9F4"
+                android:text="Nhan Tin"
+                android:textSize="15dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="50dp"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/imgvideo"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/callvideo_bl"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#03A9F4"
+                android:layout_marginTop="5dp"
+                android:text="Video"
+                android:textSize="15dp"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:background="@drawable/bgr_ttlh"
+        tools:ignore="MissingConstraints">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="20dp"
+            android:text="Thong tin lien he"/>
+        <LinearLayout
+            android:layout_width="360dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+            <ImageButton
+                android:layout_marginStart="10dp"
+                android:layout_width="35dp"
+                android:layout_gravity="center"
+                android:layout_height="35dp"
+                android:background="@drawable/phone" />
+            <TextView
+                android:id="@+id/txtsdtmain2"
+                android:layout_width="200dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:layout_height="wrap_content"
+                android:text="text"
+                android:textSize="18dp"/>
+            <ImageButton
+                android:id="@+id/imgvideottlh"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="center"
+                android:background="@drawable/callvideo"
+                tools:ignore="DuplicateIds" />
+            <ImageButton
+                android:id="@+id/imgmessttlh"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="center"
+                android:background="@drawable/messnew"
+                tools:ignore="DuplicateIds" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

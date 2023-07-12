@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+        <item android:id="@+id/nhatky"
+            android:title="Nhat ky cuoc goi"/>
+        <item android:id="@+id/caidat"
+            android:title="Cai Dat"/>
+        <item android:id="@+id/trogiup"
+            android:title="Tro giup va phan hoi"/>
+
+    </group>
+</menu>

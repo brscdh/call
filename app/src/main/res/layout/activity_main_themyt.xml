@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity_themyt"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints">
+        <androidx.appcompat.widget.SearchView
+            android:background="@drawable/edtsearch"
+            android:id="@+id/searchView"
+            android:queryHint="Tim dia chi lien he, dia diem"
+            android:layout_width="285dp"
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="1dp">
+        </androidx.appcompat.widget.SearchView>
+
+
+        <ImageButton
+            android:src="@drawable/mic"
+            android:background="@drawable/bgrecord"
+            android:layout_width="60dp"
+            android:layout_height="48dp"/>
+        <ImageButton
+            android:id="@+id/imgbmenu"
+            android:src="@drawable/iconmenu"
+            android:background="@drawable/record"
+            android:layout_width="50dp"
+            android:layout_height="48dp"/>
+
+    </LinearLayout>
+    <ListView
+        android:id="@+id/lstthemyt"
+        android:layout_width="match_parent"
+        android:dividerHeight="0dp"
+        android:divider="@null"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

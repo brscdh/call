@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity_yeuthich">
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints">
+        <SearchView
+            android:background="@drawable/edtsearch"
+            android:id="@+id/searchViewyt"
+            android:queryHint="Tim dia chi lien he, dia diem"
+            android:layout_width="285dp"
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="1dp">
+        </SearchView>
+
+
+        <ImageButton
+            android:src="@drawable/mic"
+            android:background="@drawable/bgrecord"
+            android:layout_width="60dp"
+            android:layout_height="48dp"/>
+        <ImageButton
+            android:id="@+id/imgbmenu"
+            android:src="@drawable/iconmenu"
+            android:background="@drawable/record"
+            android:layout_width="50dp"
+            android:layout_height="48dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints">
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="Nguoi Lien He Yeu Thich"
+            android:layout_marginStart="10dp"
+            android:gravity="center"
+            android:textSize="15dp"
+            android:layout_height="50dp"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="Them"
+            android:textColor="#2196F3"
+            android:id="@+id/txtthemyt"
+            android:layout_marginStart="170dp"
+            android:gravity="center"
+            android:textSize="15dp"
+            android:layout_height="50dp"/>
+
+
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <ListView
+            android:id="@+id/lstyeuthich"
+            android:layout_width="match_parent"
+            android:dividerHeight="0dp"
+            android:divider="@null"
+            android:layout_height="match_parent"/>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingbtnyt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            app:borderWidth="0dp"
+            app:elevation="6dp"
+            app:backgroundTint="@color/gainsboro"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/dauadd"
+            app:fabSize="normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="ContentDescription" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>
+<!--REAL-->

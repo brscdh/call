@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+        <item android:id="@+id/datsim"
+            android:title="Dat SIM Goi"/>
+        <item android:id="@+id/xoa"
+            android:title="Xoa"/>
+        <item android:id="@+id/sua"
+            android:title="Sua"/>
+        <item android:id="@+id/chiase"
+            android:title="Chia Se"/>
+        <item android:id="@+id/themmanhinhchinh"
+            android:title="Them vao Man Hinh Chinh"/>
+        <item android:id="@+id/datnhacchuong"
+            android:title="Dat Nhac Chuong"/>
+        <item android:id="@+id/chuyentoithuthoai"
+            android:title="Chuyen Toi Thu Thoai"/>
+        <item android:id="@+id/chanso"
+            android:title="Chan So"/>
+        <item android:id="@+id/trogiup"
+            android:title="Tro Giup Va Phan Hoi"/>
+    </group>
+</menu>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/LTS company/Project_train/Call/app/src/main/res/drawable-v24/ic_accept.xml" value="0.104" />
+        <entry key="..\:/LTS company/Project_train/Call/app/src/main/res/drawable-v24/ic_audio.xml" value="0.1125" />
+        <entry key="..\:/LTS company/Project_train/Call/app/src/main/res/drawable-v24/ic_reject.xml" value="0.104" />
+        <entry key="..\:/LTS company/Project_train/Call/app/src/main/res/drawable-v24/ic_video.xml" value="0.1125" />
+        <entry key="..\:/LTS company/Project_train/Call/app/src/main/res/drawable/background.xml" value="0.1125" />
+        <entry key="..\:/LTS company/Project_train/Call/app/src/main/res/drawable/bfr_linear.xml" value="0.1125" />
+        <entry key="..\:/LTS company/Project_train/Call/app/src/main/res/drawable/bgr_banphim.xml" value="0.125" />
+        <entry key="..\:/LTS company/Project_train/Call/app/src/main/res/drawable/bgr_edt.xml" value="0.1125" />
+        <entry key="..\:/LTS company/Project_train/Call/app/src/main/res/drawable/bgr_ttlh.xml" value="0.1125" />
+        <entry key="..\:/LTS company/Project_train/Call/app/src/main/res/drawable/bgrecord.xml" value="0.112" />
+        <entry key="..\:/LTS company/Project_train/Call/app/src/main/res/drawable/button_luu.xml" value="0.1" />
+        <entry key="..\:/LTS company/Project_train/Call/app/src/main/res/drawable/edtsearch.xml" value="0.1125" />
+        <entry key="..\:/LTS company/Project_train/Call/app/src/main/res/drawable/floating_btn.xml" value="0.1125" />
+        <entry key="..\:/LTS company/Project_train/Call/app/src/main/res/drawable/iconmenu.xml" value="0.112" />
+        <entry key="..\:/LTS company/Project_train/Call/app/src/main/res/drawable/record.xml" value="0.112" />
+        <entry key="..\:/LTS company/Project_train/Call/app/src/main/res/drawable/sim.xml" value="0.112" />
+        <entry key="..\:/LTS company/Project_train/Call/app/src/main/res/layout/activity_incoming.xml" value="0.16259057971014493" />
+        <entry key="..\:/LTS company/Project_train/Call/app/src/main/res/layout/activity_main.xml" value="0.16666666666666666" />
+        <entry key="..\:/LTS company/Project_train/Call/app/src/main/res/layout/activity_main2.xml" value="0.14130434782608695" />
+        <entry key="..\:/LTS company/Project_train/Call/app/src/main/res/layout/activity_main_sua.xml" value="0.16259057971014493" />
+        <entry key="..\:/LTS company/Project_train/Call/app/src/main/res/layout/activity_main_them.xml" value="0.16259057971014493" />
+        <entry key="..\:/LTS company/Project_train/Call/app/src/main/res/layout/activity_main_yeuthich.xml" value="0.1408514492753623" />
+        <entry key="..\:/LTS company/Project_train/Call/app/src/main/res/layout/activity_outgoing.xml" value="0.1408514492753623" />
+        <entry key="..\:/LTS company/Project_train/Call/app/src/main/res/layout/lauout_main2.xml" value="0.1408514492753623" />
+        <entry key="..\:/LTS company/Project_train/Call/app/src/main/res/layout/layout_main1.xml" value="0.1408514492753623" />
+        <entry key="..\:/LTS company/Project_train/Call/app/src/main/res/layout/layout_main3.xml" value="0.1408514492753623" />
+        <entry key="..\:/LTS company/Project_train/Call/app/src/main/res/layout/layout_them.xml" value="0.16259057971014493" />
+        <entry key="..\:/LTS company/Project_train/Call/app/src/main/res/menu/menu.xml" value="0.1796875" />
+        <entry key="..\:/LTS company/Project_train/Call/app/src/main/res/menu/menumain2.xml" value="0.1796875" />
+        <entry key="..\:/LTS company/Project_train/Call/app/src/main/res/menu/menuthem.xml" value="0.1796875" />
+        <entry key="..\:/LTS company/Project_train/Callcopy/app/src/main/res/drawable/bgr_banphim.xml" value="0.114" />
+        <entry key="..\:/LTS company/Project_train/Callcopy/app/src/main/res/drawable/bgr_edt.xml" value="0.114" />
+        <entry key="..\:/LTS company/Project_train/Callcopy/app/src/main/res/drawable/bgr_imgbnhan.xml" value="0.114" />
+        <entry key="..\:/LTS company/Project_train/Callcopy/app/src/main/res/layout/activity_incoming.xml" value="0.1796875" />
+        <entry key="..\:/LTS company/Project_train/Callcopy/app/src/main/res/layout/activity_main.xml" value="0.1796875" />
+        <entry key="..\:/LTS company/Project_train/Callcopy/app/src/main/res/layout/activity_main2.xml" value="0.1796875" />
+        <entry key="..\:/LTS company/Project_train/Callcopy/app/src/main/res/layout/activity_main_imgbyt.xml" value="0.1796875" />
+        <entry key="..\:/LTS company/Project_train/Callcopy/app/src/main/res/layout/activity_main_imgbytmain1.xml" value="0.1796875" />
+        <entry key="..\:/LTS company/Project_train/Callcopy/app/src/main/res/layout/activity_main_them.xml" value="0.1796875" />
+        <entry key="..\:/LTS company/Project_train/Callcopy/app/src/main/res/layout/activity_main_themyt.xml" value="0.1796875" />
+        <entry key="..\:/LTS company/Project_train/Callcopy/app/src/main/res/layout/activity_main_yeuthich.xml" value="0.14666666666666667" />
+        <entry key="..\:/LTS company/Project_train/Callcopy/app/src/main/res/layout/layout_main1.xml" value="0.1796875" />
+        <entry key="..\:/LTS company/Project_train/Callcopy/app/src/main/res/layout/layout_main3.xml" value="0.1796875" />
+        <entry key="..\:/LTS company/Project_train/Callcopy/app/src/main/res/menu/menumain2.xml" value="0.1796875" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
