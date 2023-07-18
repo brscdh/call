@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context=".MainActivity_them">
+    tools:context=".activity.AddContactActivity">
 
     <LinearLayout
         android:orientation="horizontal"

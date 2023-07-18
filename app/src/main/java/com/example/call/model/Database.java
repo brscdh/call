@@ -1,4 +1,4 @@
-package com.example.call;
+package com.example.call.model;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
 
 import androidx.annotation.Nullable;
+
+import com.example.call.activity.HomeActivity;
 
 public class Database extends SQLiteOpenHelper {
     public Database(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
@@ -41,7 +43,7 @@ public class Database extends SQLiteOpenHelper {
         statement.bindString(2,sdt+"");
         statement.executeInsert();
     }
-    public boolean UPDATE(Class<MainActivity> context, call calls ){
+    public boolean UPDATE(Class<HomeActivity> context, Call calls ){
         SQLiteDatabase update = getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("TEN", calls.getTen());
@@ -49,7 +51,7 @@ public class Database extends SQLiteOpenHelper {
         int row = update.update("CALL", values, "Id=?", new String[]{calls.getId()+""});
         return (row>0);
     }
-    public boolean DELETE(Class<MainActivity> context, int id){
+    public boolean DELETE(Class<HomeActivity> context, int id){
         SQLiteDatabase delete = getWritableDatabase();
         int row = delete.delete("CALL", "Id=?", new String[]{id+""});
         return (row>0);

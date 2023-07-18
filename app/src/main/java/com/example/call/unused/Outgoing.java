@@ -1,8 +1,10 @@
-package com.example.call;
+package com.example.call.unused;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.call.R;
 
 public class Outgoing extends AppCompatActivity {
 

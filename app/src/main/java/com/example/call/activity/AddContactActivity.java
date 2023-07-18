@@ -1,4 +1,4 @@
-package com.example.call;
+package com.example.call.activity;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -11,11 +11,15 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.call.R;
 import com.example.call.databinding.ActivityMainThemBinding;
+import com.example.call.model.Call;
+import com.example.call.util.DataClass;
 
-public class MainActivity_them extends AppCompatActivity {
+public class  AddContactActivity extends AppCompatActivity {
     private ActivityMainThemBinding binding;
     private Menu mymenu;
+    DataClass dataClass;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +31,7 @@ public class MainActivity_them extends AppCompatActivity {
             }else if(binding.edtten.getText().toString().isEmpty()){
                 Toast.makeText(this, "Nhap Ten", Toast.LENGTH_SHORT).show();
             }else{
-                MainActivity.database.INSERT(binding.edtten.getText().toString(),
+                HomeActivity.database.INSERT(binding.edtten.getText().toString(),
                         Integer.parseInt(binding.edtsdt.getText().toString()));
                 cursor();
                 trong();
@@ -46,21 +50,21 @@ public class MainActivity_them extends AppCompatActivity {
     }
 
     private void cursor() {
-        Cursor cursor = MainActivity.database.select("SELECT * FROM CALL");
-        MainActivity.callList.clear();
+        Cursor cursor = HomeActivity.database.select("SELECT * FROM CALL");
+        HomeActivity.callList.clear();
         while (cursor.moveToNext()) {
-            MainActivity.callList.add(new call(
+            HomeActivity.callList.add(new Call(
                     cursor.getInt(0),
                     cursor.getString(1),
                     cursor.getInt(2)
             ));
         }
-        MainActivity.adapter.notifyDataSetChanged();
+        HomeActivity.adapter.notifyDataSetChanged();
     }
     private void trong(){
         binding.edtten.setText("");
         binding.edtsdt.setText("");
-        startActivity(new Intent(MainActivity_them.this, MainActivity.class));
+        startActivity(new Intent(AddContactActivity.this, HomeActivity.class));
     }
 
     @Override
@@ -70,7 +74,7 @@ public class MainActivity_them extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
     private void showMenu(View view){
-        PopupMenu popupMenu = new PopupMenu(MainActivity_them.this, view);
+        PopupMenu popupMenu = new PopupMenu(AddContactActivity.this, view);
         MenuInflater inflater = popupMenu.getMenuInflater();
         inflater.inflate(R.menu.menuthem, popupMenu.getMenu());
         popupMenu.show();

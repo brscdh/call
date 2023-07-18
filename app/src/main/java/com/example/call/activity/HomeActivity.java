@@ -1,48 +1,51 @@
-package com.example.call;
+package com.example.call.activity;
 
-import android.app.AlertDialog;
 import android.app.SearchManager;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.provider.ContactsContract;
+import android.os.Parcelable;
+import android.speech.RecognizerIntent;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.InputMethod;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Filter;
-import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
-import androidx.core.view.MenuItemCompat;
 
 import com.example.call.databinding.ActivityMainBinding;
+import com.example.call.model.Call;
+import com.example.call.model.Database;
+import com.example.call.R;
+import com.example.call.adapter.adapter_call;
+import com.example.call.util.DataClass;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
+import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
-    public static List<call> callList;
-    public static adapter_call adapter;
     private Menu mymenu;
+    public static List<Call> callList;
+    public static adapter_call adapter;
     TextView txtsdt;
     public static Database database;
     public static int vitri;
+    private int record = 1;
     android.widget.SearchView searchView;
+    public static DataClass dataClass;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,20 +53,34 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         txtsdt = findViewById(R.id.txtsdt);
+
+        dataClass = new DataClass();
         callList = new ArrayList<>();
-        adapter = new adapter_call(MainActivity.this, R.layout.layout_main1, callList);
-        database = new Database(MainActivity.this, "callsss", null, 1);
+        adapter = new adapter_call(HomeActivity.this, R.layout.layout_main1, callList);
+        binding.listviewnguoidung.setAdapter(adapter);
+
+        //adapter = new adapter_call(HomeActivity.this, R.layout.layout_main1, dataClass.listStar);
+        database = new Database(HomeActivity.this, "callsss", null, 1);
         database.query("CREATE TABLE IF NOT EXISTS CALL(Id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "TEN TEXT, SDT TEXT)");
         cursor();
-        Collections.sort(callList, new Comparator<call>() {
+
+        Collections.sort(callList, new Comparator<Call>() {
             @Override
-            public int compare(call call, call t1) {
+            public int compare(Call call, Call t1) {
                 return (call.getTen().substring(0,1).compareTo(t1.getTen().substring(0,1)));
             }
         });
 
-        binding.listviewnguoidung.setAdapter(adapter);
+        dataClass.listContact.addAll(callList);
+
+        binding.imgbyeuthichmain1.setOnClickListener(view -> {
+            Intent intent = new Intent(HomeActivity.this, MainActivity_imgbyt.class);
+            intent.putExtra("callList", new ArrayList<>(callList));
+            dataClass.listContact.clear();
+            dataClass.listContact.addAll(callList);
+            startActivity(intent);
+        });
         binding.imgbmenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,31 +88,32 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         binding.txtthemlienhe.setOnClickListener(view->{
-            startActivity(new Intent(MainActivity.this, MainActivity_them.class));
+            startActivity(new Intent(HomeActivity.this, AddContactActivity.class));
         });
-        binding.imgbyeuthichmain1.setOnClickListener(view -> {
-//            if (vitri >= 0 && vitri < callList.size() && MainActivity2.binding.txtuser.getText().toString() !=null) {
-//                call calls = callList.get(vitri);
-//                calls.setTen(MainActivity2.binding.txtuser.getText().toString());
-//                Intent intent = new Intent(MainActivity.this, MainActivity_yeuthich.class);
-//                intent.putExtra("yeuthich", calls);
-//                startActivityForResult(intent, vitri);
-//            }
-            startActivity(new Intent(MainActivity.this, MainActivity_imgbyt.class));
-        });
-
-
-
         binding.listviewnguoidung.setOnItemClickListener((adapterView, view, i, l) -> {
+            //dataClass.vitri = i;
             vitri = i;
-            Intent intent = new Intent(MainActivity.this, MainActivity2.class);
-            call calls = callList.get(vitri);
+            Intent intent = new Intent(HomeActivity.this, ContactDetailActivity.class);
+            Call calls = callList.get(vitri);
             intent.putExtra("user", calls);
             startActivityForResult(intent, vitri);
         });
 
         binding.imgbyeuthichmain1.setOnClickListener(view->{
-            startActivity(new Intent(MainActivity.this, MainActivity_yeuthich.class));
+            startActivity(new Intent(HomeActivity.this, MainActivity_yeuthich.class));
+        });
+        binding.imgbrecord.setOnClickListener(v->{
+            Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+            intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                    RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+            intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE,
+                    Locale.getDefault());
+            intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Spaek to text");
+            try{
+                startActivityForResult(intent, record);
+            }catch (Exception e){
+                Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
         });
         binding.searchView.setOnSearchClickListener(new View.OnClickListener() {
             @Override
@@ -106,13 +124,13 @@ public class MainActivity extends AppCompatActivity {
                 binding.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                     @Override
                     public boolean onQueryTextSubmit(String s) {
-                        adapter.getFilter().filter(s);
+                        dataClass.adapterCall.getFilter().filter(s);
                         return false;
                     }
 
                     @Override
                     public boolean onQueryTextChange(String s) {
-                        adapter.getFilter().filter(s);
+                        dataClass.adapterCall.getFilter().filter(s);
                         if(s.isEmpty()){
                             return true;
                         }
@@ -135,13 +153,14 @@ public class MainActivity extends AppCompatActivity {
         Cursor cursor =database.select("SELECT * FROM CALL");
         callList.clear();
         while(cursor.moveToNext()){
-            callList.add(new call(
+            callList.add(new Call(
                     cursor.getInt(0),
                     cursor.getString(1),
                     cursor.getInt(2)
             ));
         }
         adapter.notifyDataSetChanged();
+
     }
 
    private void shownumberkeybroard(){
@@ -162,10 +181,19 @@ public class MainActivity extends AppCompatActivity {
             return super.onCreateOptionsMenu(menu);
         }
     private void showMenu(View v) {
-        PopupMenu popupMenu = new PopupMenu(MainActivity.this, v);
+        PopupMenu popupMenu = new PopupMenu(HomeActivity.this, v);
         MenuInflater inflater = popupMenu.getMenuInflater();
         inflater.inflate(R.menu.menu, popupMenu.getMenu());
         popupMenu.show();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==record && requestCode == RESULT_OK && data != null){
+            ArrayList<String> result =data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+            binding.searchView.setQuery(Objects.requireNonNull(result).get(0),false);
+        }
     }
 
     @Override

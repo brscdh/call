@@ -1,7 +1,6 @@
-package com.example.call;
+package com.example.call.activity;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,23 +14,24 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import java.security.Permission;
+import com.example.call.model.Call;
+import com.example.call.unused.Incoming;
+import com.example.call.R;
+import com.example.call.adapter.adapter_call;
+import com.example.call.util.DataClass;
+
 import java.util.List;
 
-public class MainActivity2 extends AppCompatActivity {
+public class ContactDetailActivity extends AppCompatActivity {
     public static com.example.call.databinding.ActivityMain2Binding binding;
-    call calls;
-    private List<call> callList;
-    private adapter_call adapterCall;
-    int vitri = MainActivity.vitri;
-    public  static int vitrimain2;
+    Call calls;
     PopupMenu popupMenu;
+    DataClass dataClass;
 
     private Menu mymenu;
 
@@ -43,7 +43,7 @@ public class MainActivity2 extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        calls = (call) intent.getSerializableExtra("user");
+        calls = (Call) intent.getSerializableExtra("user");
         binding.txtuser.setText(calls.getTen());
         binding.txtsdtmain2.setText(calls.getSdt()+"");
 
@@ -52,11 +52,11 @@ public class MainActivity2 extends AppCompatActivity {
 
 
         binding.imgbyeuthich.setOnClickListener(view->{
-            Intent intent1 = new Intent(MainActivity2.this, MainActivity_yeuthich.class);
-            call calls = MainActivity.callList.get(MainActivity.vitri);
-            intent1.putExtra("yeuthich", calls);
-            //intent1.putExtra("txtyt",binding.txtuser.getText().toString());
-            startActivityForResult(intent1, vitri);
+            Call call = HomeActivity.callList.get(HomeActivity.vitri);
+            DataClass dataClass = new DataClass();
+            dataClass.listStar.get(dataClass.vitri).setFav(!call.isFav());
+            Toast.makeText(this, "Thanh Cong", Toast.LENGTH_SHORT).show();
+
         });
         binding.imgbmenumain2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,18 +66,18 @@ public class MainActivity2 extends AppCompatActivity {
             }
         });
         binding.imageButtonback.setOnClickListener(view->{
-            startActivity(new Intent(MainActivity2.this, MainActivity.class));
+            startActivity(new Intent(ContactDetailActivity.this, HomeActivity.class));
         });
 //        binding.imgcall.setOnClickListener(view->{
-//            Intent intent2 = new Intent(MainActivity2.this, Incoming.class);
-//            //call calls = MainActivity.callList.get(vitri);
-//            intent2.putExtra("call", calls);
+//            Intent intent2 = new Intent(ContactDetailActivity.this, Incoming.class);
+//            //Call calls = HomeActivity.callList.get(vitri);
+//            intent2.putExtra("Call", calls);
 //            intent2.putExtra("type", "justcall");
 //            startActivityForResult(intent2, vitri);
 //        });
-        if(ContextCompat.checkSelfPermission(MainActivity2.this, Manifest.permission.CALL_PHONE)
+        if(ContextCompat.checkSelfPermission(ContactDetailActivity.this, Manifest.permission.CALL_PHONE)
                 != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(MainActivity2.this, new String[]{Manifest.permission.CALL_PHONE},vitri );
+            ActivityCompat.requestPermissions(ContactDetailActivity.this, new String[]{Manifest.permission.CALL_PHONE},dataClass.vitri );
         }
         binding.imgcall.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,25 +88,25 @@ public class MainActivity2 extends AppCompatActivity {
             }
         });
         binding.imgvideo.setOnClickListener(view->{
-            Intent intent2 = new Intent(MainActivity2.this, Incoming.class);
-            //call calls = MainActivity.callList.get(vitri);
-            intent2.putExtra("call", calls);
+            Intent intent2 = new Intent(ContactDetailActivity.this, Incoming.class);
+            //Call calls = HomeActivity.callList.get(vitri);
+            intent2.putExtra("Call", calls);
             intent2.putExtra("type", "callvideo");
-            startActivityForResult(intent2, vitri);
+            startActivityForResult(intent2, HomeActivity.vitri);
         });
-        cursor();
+       // cursor();
     }
     private void cursor(){
-        Cursor cursor =MainActivity.database.select("SELECT * FROM CALL");
-        MainActivity.callList.clear();
+        Cursor cursor = HomeActivity.database.select("SELECT * FROM CALL");
+        dataClass.listContact.clear();
         while(cursor.moveToNext()){
-            MainActivity.callList.add(new call(
+            dataClass.listContact.add(new Call(
                     cursor.getInt(0),
                     cursor.getString(1),
                     cursor.getInt(2)
             ));
         }
-        MainActivity.adapter.notifyDataSetChanged();
+        dataClass.adapterCall.notifyDataSetChanged();
 
     }
 
@@ -118,7 +118,7 @@ public class MainActivity2 extends AppCompatActivity {
     }
 
     private void showMenu(View v) {
-        PopupMenu popupMenu = new PopupMenu(MainActivity2.this, v);
+        PopupMenu popupMenu = new PopupMenu(ContactDetailActivity.this, v);
         MenuInflater inflater = popupMenu.getMenuInflater();
         inflater.inflate(R.menu.menumain2, popupMenu.getMenu());
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
@@ -126,10 +126,10 @@ public class MainActivity2 extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.sua:
-                        Intent intentsua = new Intent(MainActivity2.this, MainActivity_sua.class);
-                        call calls = MainActivity.callList.get(MainActivity.vitri);
+                        Intent intentsua = new Intent(ContactDetailActivity.this, EditContactActivity.class);
+                        Call calls = dataClass.listContact.get(dataClass.vitri);
                         intentsua.putExtra("sua", calls);
-                        startActivityForResult(intentsua, MainActivity.vitri);
+                        startActivityForResult(intentsua, dataClass.vitri);
                         return true;
                     case R.id.xoa:
                         xoa();
@@ -142,17 +142,19 @@ public class MainActivity2 extends AppCompatActivity {
     }
 
     private void xoa(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity2.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(ContactDetailActivity.this);
         builder.setTitle("THONG BAO");
         builder.setMessage("BAN CO MUON XOA KO?");
         builder.setCancelable(false);
         builder.setNegativeButton("CO", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                call calls = MainActivity.callList.get(vitri);
-                MainActivity.database.DELETE(MainActivity.class, calls.getId());
-                MainActivity.cursor();
-                Toast.makeText(MainActivity2.this, "Xoa Thanh Cong", Toast.LENGTH_SHORT).show();
+                Call calls = HomeActivity.callList.get(HomeActivity.vitri);
+                HomeActivity.database.DELETE(HomeActivity.class, calls.getId());
+                HomeActivity.cursor();
+                HomeActivity.adapter.notifyDataSetChanged();
+                finish();
+                Toast.makeText(ContactDetailActivity.this, "Xoa Thanh Cong", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -164,5 +166,10 @@ public class MainActivity2 extends AppCompatActivity {
 
         });
         builder.show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }
